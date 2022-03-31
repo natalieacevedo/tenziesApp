@@ -3,29 +3,27 @@ import Die from "./components/Die";
 import React, { useState, useEffect } from "react";
 
 export default function App() {
-  const [dice, setDice] = useState([
-    {
-      isHeld: false,
-      value: newDice(),
-    },
-  ]);
+  const [dice, setDice] = useState(newDice());
 
   function newDice() {
     let allValues = [];
     for (let i = 1; i <= 10; i++) {
       const oneToSixNumber = Math.floor(Math.random() * 6) + 1;
-      allValues.push(oneToSixNumber);
+      allValues.push({ value: oneToSixNumber, isHeld: false });
     }
     return allValues;
   }
 
   function rollingDice() {
-    setDice((prev) => prev.map((die) => ({ ...die, value: newDice() })));
+    // setDice((prev) => prev.map((die) => ({ ...die, value: newDice() })));
+    setDice(newDice());
   }
-
+  console.log(dice);
   //useEffect(newDice, []);
 
-  const die = dice[0].value.map((die, ind) => <Die key={ind} value={die} />);
+  const die = dice.map((die, ind) => (
+    <Die key={ind} value={die.value} isHeld={die.isHeld} />
+  ));
 
   return (
     <main className="mainBody">
