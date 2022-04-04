@@ -1,6 +1,9 @@
 function Die({ value, isHeld, switchIsHeld, index }) {
   return (
-    <div onClick={(e) => switchIsHeld(e, index)} className="littleBox">
+    <div
+      onClick={(e) => switchIsHeld(e, index)}
+      className={`littleBox ${isHeld ? "selected" : ""}`}
+    >
       <h4 className="dieNum">{value}</h4>
     </div>
   );

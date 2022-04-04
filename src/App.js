@@ -36,21 +36,13 @@ export default function App() {
     console.log(event);
     console.log(indi);
 
-    const chosenNumber = parseInt(event.currentTarget.textContent);
-    console.log(typeof chosenNumber, chosenNumber);
-
     setDice((prev) => {
-      return prev.map((el, index) => {
-        !el.isHeld
-          ? (event.target.style.backgroundColor = "red")
-          : (event.target.style.backgroundColor = "white");
-
-        return Object.values(el).includes(chosenNumber) && indi === index
-          ? { ...el, isHeld: !el.isHeld }
-          : { ...el };
-      });
+      return prev.map((el, index) =>
+        indi === index ? { ...el, isHeld: !el.isHeld } : el
+      );
     });
   }
+  
   //useEffect(newDice, []);
 
   const die = dice.map((die, ind) => (
