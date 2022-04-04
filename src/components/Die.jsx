@@ -1,10 +1,11 @@
-function Die({ value, isHeld }) {
-  console.log(isHeld);
+function Die({ value, isHeld, switchIsHeld, index }) {
   return (
-    <div className="littleBox">
+    <div onClick={(e) => switchIsHeld(e, index)} className="littleBox">
       <h4 className="dieNum">{value}</h4>
     </div>
   );
 }
 
 export default Die;
+
+//className={`littleBox ${isHeld ? "selected" : ""}`}
