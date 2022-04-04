@@ -4,21 +4,31 @@ import React, { useState, useEffect } from "react";
 
 export default function App() {
   const [dice, setDice] = useState(newDice());
-  console.log(typeof dice[0].value);
+
   console.log(dice);
+
+  function onlyOneDie() {
+    let oneObject = {
+      value: Math.floor(Math.random() * 6) + 1,
+      isHeld: false,
+    };
+    return oneObject;
+  }
 
   function newDice() {
     let allValues = [];
     for (let i = 1; i <= 10; i++) {
-      const oneToSixNumber = Math.floor(Math.random() * 6) + 1;
-
-      allValues.push({ value: oneToSixNumber, isHeld: false });
+      allValues.push(onlyOneDie());
     }
+
     return allValues;
   }
 
   function rollingDice() {
-    setDice(newDice());
+    //setDice(newDice());
+    setDice((prev) => {
+      return prev.map((el) => (el.isHeld ? el : onlyOneDie()));
+    });
   }
 
   function switchIsHeld(event, indi) {
