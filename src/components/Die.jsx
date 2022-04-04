@@ -10,5 +10,3 @@ function Die({ value, isHeld, switchIsHeld, index }) {
 }
 
 export default Die;
-
-//className={`littleBox ${isHeld ? "selected" : ""}`}

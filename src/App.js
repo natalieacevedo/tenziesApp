@@ -1,11 +1,12 @@
 import "./App.css";
 import Die from "./components/Die";
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 
 export default function App() {
   const [dice, setDice] = useState(newDice());
 
   console.log(dice);
+  const isItOver = dice.every((el) => el.isHeld);
 
   function onlyOneDie() {
     let oneObject = {
@@ -25,9 +26,20 @@ export default function App() {
   }
 
   function rollingDice() {
-    //setDice(newDice());
+    // setDice((prev) => {
+    //   return prev.map((el) => (el.isHeld ? el : onlyOneDie()));
+    // });
+
     setDice((prev) => {
-      return prev.map((el) => (el.isHeld ? el : onlyOneDie()));
+      return prev.map((el) => {
+        if (isItOver) {
+          return onlyOneDie();
+        } else if (el.isHeld) {
+          return el;
+        } else {
+          return onlyOneDie();
+        }
+      });
     });
   }
 
@@ -42,8 +54,8 @@ export default function App() {
       );
     });
   }
-  
-  //useEffect(newDice, []);
+
+  console.log(isItOver);
 
   const die = dice.map((die, ind) => (
     <Die
@@ -60,7 +72,7 @@ export default function App() {
       <h1 className="mainTitle">Tenzies app</h1>
       <div className="boxesContainer">{die}</div>
       <button onClick={rollingDice} className="rollDice">
-        Roll me
+        {isItOver ? "Start again" : "Roll me"}
       </button>
     </main>
   );
