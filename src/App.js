@@ -6,7 +6,9 @@ export default function App() {
   const [dice, setDice] = useState(newDice());
 
   console.log(dice);
-  const isItOver = dice.every((el) => el.isHeld);
+  const isItOver = dice.every(
+    (el, i, arr) => el.isHeld && el.value === arr[0].value
+  );
 
   function onlyOneDie() {
     let oneObject = {
@@ -26,18 +28,12 @@ export default function App() {
   }
 
   function rollingDice() {
-    // setDice((prev) => {
-    //   return prev.map((el) => (el.isHeld ? el : onlyOneDie()));
-    // });
-
     setDice((prev) => {
       return prev.map((el) => {
-        if (isItOver) {
+        if (isItOver || !el.isHeld) {
           return onlyOneDie();
-        } else if (el.isHeld) {
-          return el;
         } else {
-          return onlyOneDie();
+          return el;
         }
       });
     });
