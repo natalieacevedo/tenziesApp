@@ -1,9 +1,13 @@
 import "./App.css";
 import Die from "./components/Die";
 import React, { useState } from "react";
+//import useWindowSize from "react-use-window-size";
+import Confetti from "react-confetti";
 
 export default function App() {
   const [dice, setDice] = useState(newDice());
+  //const { width, height } = useWindowSize();
+  //console.log(width, height);
 
   console.log(dice);
   const isItOver = dice.every(
@@ -41,8 +45,6 @@ export default function App() {
 
   function switchIsHeld(event, indi) {
     event.preventDefault();
-    console.log(event);
-    console.log(indi);
 
     setDice((prev) => {
       return prev.map((el, index) =>
@@ -65,11 +67,20 @@ export default function App() {
 
   return (
     <main className="mainBody">
+      {isItOver && <Confetti />}
       <h1 className="mainTitle">Tenzies app</h1>
+      {isItOver && <h1 className="winner">You Won!</h1>}
+      <p className="instructions">
+        Roll until all dice are the same. Click each die to freeze it at its
+        current value between rolls!
+      </p>
       <div className="boxesContainer">{die}</div>
       <button onClick={rollingDice} className="rollDice">
-        {isItOver ? "Start again" : "Roll me"}
+        {isItOver ? "New Game" : "Roll me"}
       </button>
     </main>
   );
 }
+
+
+ 
