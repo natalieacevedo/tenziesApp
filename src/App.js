@@ -1,13 +1,15 @@
 import "./App.css";
 import Die from "./components/Die";
-import React, { useState } from "react";
-//import useWindowSize from "react-use-window-size";
+import React, { useState, useEffect } from "react";
 import Confetti from "react-confetti";
 
 export default function App() {
   const [dice, setDice] = useState(newDice());
-  //const { width, height } = useWindowSize();
-  //console.log(width, height);
+  const [numberOfRolls, setNumberOfRolls] = useState(0);
+  const [startDate, setStartDate] = useState(new Date());
+  const [endDate, setEndDate] = useState(null);
+  const [bestNumberOfRolls, setBestNumberOfRolls] = useState("");
+  const [bestTime, setBestTime] = useState("");
 
   console.log(dice);
   const isItOver = dice.every(
@@ -32,6 +34,8 @@ export default function App() {
   }
 
   function rollingDice() {
+    console.log(startDate);
+    setNumberOfRolls((prev) => (isItOver ? 0 : prev + 1));
     setDice((prev) => {
       return prev.map((el) => {
         if (isItOver || !el.isHeld) {
@@ -43,6 +47,17 @@ export default function App() {
     });
   }
 
+  useEffect(() => {
+    if (isItOver) {
+      setEndDate(() => {
+        let miliSeconds = new Date() - startDate;
+        return miliSeconds / 1000;
+      });
+    }
+  }, [isItOver, startDate]);
+
+  console.log(endDate);
+
   function switchIsHeld(event, indi) {
     event.preventDefault();
 
@@ -52,8 +67,6 @@ export default function App() {
       );
     });
   }
-
-  console.log(isItOver);
 
   const die = dice.map((die, ind) => (
     <Die
@@ -69,7 +82,12 @@ export default function App() {
     <main className="mainBody">
       {isItOver && <Confetti />}
       <h1 className="mainTitle">Tenzies app</h1>
-      {isItOver && <h1 className="winner">You Won!</h1>}
+      {isItOver && (
+        <h1 className="winner">
+          You Won, and did it in only {numberOfRolls} rolls and {endDate}{" "}
+          seconds!
+        </h1>
+      )}
       <p className="instructions">
         Roll until all dice are the same. Click each die to freeze it at its
         current value between rolls!
