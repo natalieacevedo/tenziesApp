@@ -91,7 +91,10 @@ justify-content: space-between;
   top: -8vh; 
   font-size: 2.5rem;
 }
-
+.titleWinner{
+  position: relative;
+  top: .5vh;
+}
 .littleBox{
   
   height: 3.135rem;
@@ -148,15 +151,15 @@ padding: 0.5rem;
   text-align: center;
 }
 .best{
-  font-size: 1.3rem;
-  margin-top: 4vh;
+  font-size: 1.2rem;
+  margin-top: 3vh;
   text-align: center;
   line-height: 2rem;
 }
 @media screen and (max-width: 600px) {
   .littleBox {
-    height: 1.80rem;
-    width: 1.80rem;
+    height: 1.70rem;
+    width: 1.70rem;
   }
 
   .dot{
@@ -168,31 +171,44 @@ padding: 0.5rem;
 
   .boxesContainer{
     gap:0.60rem;
+    margin-top: 1.5vh;
   }
 
   .mainBody{
-    width: 55vw;
+    width: 65vw;
   }
 
   .instructions{
+    position: relative;
     font-size: 1.2rem;
-    top: -13vh;
+    top: .2vh;
+    margin-top:-5vh;
+    padding: relative;
   }
 
   .mainTitle{
-    top: -10vh;
+    top: -5vh;
     font-size: 2rem;
     text-align: center;
+  }
+
+  .winner{
+    font-size: 1.5rem;
+    top:-3vh;
   }
 }
 
 @media screen and (min-width:600px) and (max-width:1000px) {
+  .mainBody{
+    width: 60vw;
+  }
   .littleBox {
     height: 2.1rem;
     width: 2.1rem;
   }
   .boxesContainer{
     gap:0.5rem;
+    margin-top: 1.5vh;
   }
 
   .dot{

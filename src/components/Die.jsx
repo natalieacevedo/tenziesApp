@@ -73,6 +73,7 @@ function Die({ value, isHeld, switchIsHeld, index }) {
       </>
     );
   }
+  //`${isItOver ? titleWinner : mainTitle}`
 
   return (
     <div

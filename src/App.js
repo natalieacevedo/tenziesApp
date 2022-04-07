@@ -33,20 +33,6 @@ export default function App() {
     }
   }, [bestTime, gameTime, isItOver]);
 
-  //impostora
-  // useEffect(() => {
-  //   if (!bestTime || gameTime < bestTime) {
-  //     localStorage.setItem("bestTime", gameTime.toString());
-  //     setBestTime(gameTime);
-  //   }
-  //   if (isItOver) {
-  //     setGameTime(() => {
-  //       let miliSeconds = new Date() - startDate;
-  //       return miliSeconds / 1000;
-  //     });
-  //   }
-  // }, [bestTime, gameTime, isItOver, startDate]);
-
   useEffect(() => {
     if (isItOver) {
       setGameTime(() => {
@@ -109,7 +95,9 @@ export default function App() {
   return (
     <main className="mainBody">
       {isItOver && <Confetti />}
-      <h1 className="mainTitle">Tenzies app</h1>
+      <h1 className={`${isItOver ? "titleWinner" : "mainTitle"}`}>
+        Tenzies app
+      </h1>
       {isItOver && (
         <h1 className="winner">
           You Won, and did it in only {numberOfRolls} rolls and {gameTime}{" "}
@@ -134,7 +122,7 @@ export default function App() {
             bestNumberOfRolls +
             ". And your best time is " +
             bestTime +
-            " seconds !"}
+            " seconds"}
         </p>
       ) : (
         " "
