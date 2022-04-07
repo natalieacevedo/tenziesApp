@@ -27,13 +27,20 @@ export default function App() {
   }, [isItOver, numberOfRolls, bestNumberOfRolls]);
 
   useEffect(() => {
-    if (bestTime || gameTime < bestTime) {
+    if (!bestTime || gameTime < bestTime) {
       localStorage.setItem("bestTime", gameTime.toString());
       setBestTime(gameTime);
     }
   }, [bestTime, gameTime]);
 
-  console.log(bestTime, gameTime);
+  useEffect(() => {
+    if (isItOver) {
+      setGameTime(() => {
+        let miliSeconds = new Date() - startDate;
+        return miliSeconds / 1000;
+      });
+    }
+  }, [isItOver, startDate]);
 
   function onlyOneDie() {
     let oneObject = {
@@ -54,6 +61,8 @@ export default function App() {
 
   function newGame() {
     setNumberOfRolls(0);
+    setStartDate(new Date());
+
     setDice((prev) => prev.map((el) => onlyOneDie()));
   }
 
@@ -61,15 +70,6 @@ export default function App() {
     setNumberOfRolls((prev) => prev + 1);
     setDice((prev) => prev.map((el) => (!el.isHeld ? onlyOneDie() : el)));
   }
-
-  useEffect(() => {
-    if (isItOver) {
-      setGameTime(() => {
-        let miliSeconds = new Date() - startDate;
-        return miliSeconds / 1000;
-      });
-    }
-  }, [isItOver, startDate]);
 
   function switchIsHeld(event, indi) {
     event.preventDefault();
