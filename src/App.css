@@ -1,6 +1,6 @@
 .mainBody{
   width: 35vw;
-  height: 80vh;
+  height: 90vh;
   border: 3vw solid black;
   margin: 5vh auto;
   border-radius: 5rem;
@@ -88,7 +88,7 @@ justify-content: space-between;
   margin-right: auto;
   width: fit-content;
   position: relative;
-  top: -13vh; 
+  top: -8vh; 
   font-size: 2.5rem;
 }
 
@@ -150,6 +150,8 @@ padding: 0.5rem;
 .best{
   font-size: 1.3rem;
   margin-top: 4vh;
+  text-align: center;
+  line-height: 2rem;
 }
 @media screen and (max-width: 600px) {
   .littleBox {

@@ -6,14 +6,15 @@ import Confetti from "react-confetti";
 export default function App() {
   const [dice, setDice] = useState(newDice());
   const [numberOfRolls, setNumberOfRolls] = useState(0);
-  const [startDate, setStartDate] = useState(new Date());
-  const [endDate, setEndDate] = useState(null);
   const [bestNumberOfRolls, setBestNumberOfRolls] = useState(
     parseInt(localStorage.getItem("rolls"), 10) || null
   );
-  const [bestTime, setBestTime] = useState("");
+  const [bestTime, setBestTime] = useState(
+    parseInt(localStorage.getItem("bestTime"), 10) || null
+  );
+  const [startDate, setStartDate] = useState(new Date());
+  const [gameTime, setGameTime] = useState(0);
 
-  console.log(dice);
   const isItOver = dice.every(
     (el, i, arr) => el.isHeld && el.value === arr[0].value
   );
@@ -25,7 +26,14 @@ export default function App() {
     }
   }, [isItOver, numberOfRolls, bestNumberOfRolls]);
 
-  console.log(typeof bestNumberOfRolls, bestNumberOfRolls, "nata");
+  useEffect(() => {
+    if (bestTime || gameTime < bestTime) {
+      localStorage.setItem("bestTime", gameTime.toString());
+      setBestTime(gameTime);
+    }
+  }, [bestTime, gameTime]);
+
+  console.log(bestTime, gameTime);
 
   function onlyOneDie() {
     let oneObject = {
@@ -44,30 +52,24 @@ export default function App() {
     return allValues;
   }
 
+  function newGame() {
+    setNumberOfRolls(0);
+    setDice((prev) => prev.map((el) => onlyOneDie()));
+  }
+
   function rollingDice() {
-    console.log(startDate);
-    setNumberOfRolls((prev) => (isItOver ? 0 : prev + 1));
-    setDice((prev) => {
-      return prev.map((el) => {
-        if (isItOver || !el.isHeld) {
-          return onlyOneDie();
-        } else {
-          return el;
-        }
-      });
-    });
+    setNumberOfRolls((prev) => prev + 1);
+    setDice((prev) => prev.map((el) => (!el.isHeld ? onlyOneDie() : el)));
   }
 
   useEffect(() => {
     if (isItOver) {
-      setEndDate(() => {
+      setGameTime(() => {
         let miliSeconds = new Date() - startDate;
         return miliSeconds / 1000;
       });
     }
   }, [isItOver, startDate]);
-
-  console.log(endDate);
 
   function switchIsHeld(event, indi) {
     event.preventDefault();
@@ -95,7 +97,7 @@ export default function App() {
       <h1 className="mainTitle">Tenzies app</h1>
       {isItOver && (
         <h1 className="winner">
-          You Won, and did it in only {numberOfRolls} rolls and {endDate}{" "}
+          You Won, and did it in only {numberOfRolls} rolls and {gameTime}{" "}
           seconds!
         </h1>
       )}
@@ -104,15 +106,20 @@ export default function App() {
         current value between rolls!
       </p>
       <div className="boxesContainer">{die}</div>
-      <button onClick={rollingDice} className="rollDice">
+      <button
+        onClick={() => (isItOver ? newGame() : rollingDice())}
+        className="rollDice"
+      >
         {isItOver ? "New Game" : "Roll me"}
       </button>
 
-      {bestNumberOfRolls && (
+      {bestNumberOfRolls && bestTime && (
         <p className="best">
           {"Your fewer and therefore best number of rolls is " +
             bestNumberOfRolls +
-            " !"}
+            ". And your best time is " +
+            bestTime +
+            " seconds !"}
         </p>
       )}
     </main>
