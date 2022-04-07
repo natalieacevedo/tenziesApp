@@ -8,13 +8,24 @@ export default function App() {
   const [numberOfRolls, setNumberOfRolls] = useState(0);
   const [startDate, setStartDate] = useState(new Date());
   const [endDate, setEndDate] = useState(null);
-  const [bestNumberOfRolls, setBestNumberOfRolls] = useState("");
+  const [bestNumberOfRolls, setBestNumberOfRolls] = useState(
+    parseInt(localStorage.getItem("rolls"), 10) || null
+  );
   const [bestTime, setBestTime] = useState("");
 
   console.log(dice);
   const isItOver = dice.every(
     (el, i, arr) => el.isHeld && el.value === arr[0].value
   );
+
+  useEffect(() => {
+    if (isItOver && (!bestNumberOfRolls || numberOfRolls < bestNumberOfRolls)) {
+      localStorage.setItem("rolls", numberOfRolls.toString());
+      setBestNumberOfRolls(numberOfRolls);
+    }
+  }, [isItOver, numberOfRolls, bestNumberOfRolls]);
+
+  console.log(typeof bestNumberOfRolls, bestNumberOfRolls, "nata");
 
   function onlyOneDie() {
     let oneObject = {
@@ -96,6 +107,14 @@ export default function App() {
       <button onClick={rollingDice} className="rollDice">
         {isItOver ? "New Game" : "Roll me"}
       </button>
+
+      {bestNumberOfRolls && (
+        <p className="best">
+          {"Your fewer and therefore best number of rolls is " +
+            bestNumberOfRolls +
+            " !"}
+        </p>
+      )}
     </main>
   );
 }

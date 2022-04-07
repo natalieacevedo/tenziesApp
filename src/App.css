@@ -147,6 +147,10 @@ padding: 0.5rem;
   top:-8vh;
   text-align: center;
 }
+.best{
+  font-size: 1.3rem;
+  margin-top: 4vh;
+}
 @media screen and (max-width: 600px) {
   .littleBox {
     height: 1.80rem;
