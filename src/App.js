@@ -27,11 +27,25 @@ export default function App() {
   }, [isItOver, numberOfRolls, bestNumberOfRolls]);
 
   useEffect(() => {
-    if (!bestTime || gameTime < bestTime) {
+    if (isItOver && (!bestTime || gameTime < bestTime)) {
       localStorage.setItem("bestTime", gameTime.toString());
       setBestTime(gameTime);
     }
-  }, [bestTime, gameTime]);
+  }, [bestTime, gameTime, isItOver]);
+
+  //impostora
+  // useEffect(() => {
+  //   if (!bestTime || gameTime < bestTime) {
+  //     localStorage.setItem("bestTime", gameTime.toString());
+  //     setBestTime(gameTime);
+  //   }
+  //   if (isItOver) {
+  //     setGameTime(() => {
+  //       let miliSeconds = new Date() - startDate;
+  //       return miliSeconds / 1000;
+  //     });
+  //   }
+  // }, [bestTime, gameTime, isItOver, startDate]);
 
   useEffect(() => {
     if (isItOver) {
@@ -90,6 +104,7 @@ export default function App() {
       switchIsHeld={switchIsHeld}
     />
   ));
+  console.log(bestNumberOfRolls, bestTime);
 
   return (
     <main className="mainBody">
