@@ -113,7 +113,7 @@ export default function App() {
         {isItOver ? "New Game" : "Roll me"}
       </button>
 
-      {bestNumberOfRolls && bestTime && (
+      {bestNumberOfRolls && bestTime ? (
         <p className="best">
           {"Your fewer and therefore best number of rolls is " +
             bestNumberOfRolls +
@@ -121,7 +121,19 @@ export default function App() {
             bestTime +
             " seconds !"}
         </p>
+      ) : (
+        " "
       )}
+
+      {/* {bestNumberOfRolls && bestTime && (
+        <p className="best">
+          {"Your fewer and therefore best number of rolls is " +
+            bestNumberOfRolls +
+            ". And your best time is " +
+            bestTime +
+            " seconds !"}
+        </p>
+      )} */}
     </main>
   );
 }
