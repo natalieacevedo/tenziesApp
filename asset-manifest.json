@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/tenziesApp/static/css/main.7bd15a40.css",
+    "main.js": "/tenziesApp/static/js/main.5c80cfb3.js",
+    "static/js/787.9243050f.chunk.js": "/tenziesApp/static/js/787.9243050f.chunk.js",
+    "index.html": "/tenziesApp/index.html",
+    "main.7bd15a40.css.map": "/tenziesApp/static/css/main.7bd15a40.css.map",
+    "main.5c80cfb3.js.map": "/tenziesApp/static/js/main.5c80cfb3.js.map",
+    "787.9243050f.chunk.js.map": "/tenziesApp/static/js/787.9243050f.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.7bd15a40.css",
+    "static/js/main.5c80cfb3.js"
+  ]
+}
