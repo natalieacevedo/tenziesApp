@@ -70,6 +70,8 @@ justify-content: space-between;
 
 .winner{
   color: #cf5e5e;
+  position: relative;
+  top: -4vh;
 }
 
 .boxesContainer{
@@ -139,13 +141,16 @@ padding: 0.5rem;
 .instructions {
 
   font-weight: 400;
-  margin-top: -9vh;
+  margin-top: -6vh;
   text-align: center;
   line-height: 1.5rem;
   font-size: 1.3rem;
   line-height: 2rem;
+  padding-left: 4%;
+  padding-right: 4%;
 }
 .winner{
+  margin-top:8vh;
   position:relative;
   top:-8vh;
   text-align: center;
@@ -155,6 +160,8 @@ padding: 0.5rem;
   margin-top: 3vh;
   text-align: center;
   line-height: 2rem;
+  padding-left: 4%;
+  padding-right: 4%;
 }
 @media screen and (max-width: 600px) {
   .littleBox {
