@@ -67,8 +67,12 @@ export default function App() {
   }
 
   function rollingDice() {
-    setNumberOfRolls((prev) => prev + 1);
-    setDice((prev) => prev.map((el) => (!el.isHeld ? onlyOneDie() : el)));
+    if (isItOver) {
+      return;
+    } else {
+      setNumberOfRolls((prev) => prev + 1);
+      setDice((prev) => prev.map((el) => (!el.isHeld ? onlyOneDie() : el)));
+    }
   }
 
   function switchIsHeld(event, indi) {
@@ -100,8 +104,9 @@ export default function App() {
       </h1>
       {isItOver && (
         <h1 className="winner">
-          You Won, and did it in only {numberOfRolls} rolls and {gameTime}{" "}
-          seconds!
+          You Won, and did it in only{" "}
+          <strong className="winnerStats">{numberOfRolls}</strong> rolls and{" "}
+          <strong className="winnerStats">{gameTime}</strong> seconds!
         </h1>
       )}
       <p className="instructions">
@@ -118,25 +123,13 @@ export default function App() {
 
       {bestNumberOfRolls && bestTime ? (
         <p className="best">
-          {"Your fewer and therefore best number of rolls is " +
-            bestNumberOfRolls +
-            ". And your best time is " +
-            bestTime +
-            " seconds"}
+          Your fewer and therefore best number of rolls is{" "}
+          <strong>{bestNumberOfRolls}</strong>. And your best time is{" "}
+          <strong>{bestTime}</strong> seconds
         </p>
       ) : (
         " "
       )}
-
-      {/* {bestNumberOfRolls && bestTime && (
-        <p className="best">
-          {"Your fewer and therefore best number of rolls is " +
-            bestNumberOfRolls +
-            ". And your best time is " +
-            bestTime +
-            " seconds !"}
-        </p>
-      )} */}
     </main>
   );
 }

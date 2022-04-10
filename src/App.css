@@ -97,6 +97,10 @@ justify-content: space-between;
   position: relative;
   top: .5vh;
 }
+
+.winnerStats{
+  color: #a04a59;
+}
 .littleBox{
   
   height: 3.135rem;
@@ -163,6 +167,7 @@ padding: 0.5rem;
   padding-left: 4%;
   padding-right: 4%;
 }
+
 @media screen and (max-width: 600px) {
   .littleBox {
     height: 1.70rem;
@@ -188,9 +193,11 @@ padding: 0.5rem;
   .instructions{
     position: relative;
     font-size: 1.2rem;
-    top: .2vh;
+    top: 1vh;
     margin-top:-5vh;
     padding: relative;
+    line-height: 1.5rem;
+    font-size: 1.2rem;
   }
 
   .mainTitle{
@@ -202,6 +209,28 @@ padding: 0.5rem;
   .winner{
     font-size: 1.5rem;
     top:-3vh;
+  }
+  .best{ 
+    line-height: 1.5rem;
+  }
+}
+
+
+@media screen and (max-width: 320px){
+  .littleBox{
+    height: 1.40rem;
+    width: 1.40rem;
+  }
+
+  .mainTitle{
+    font-size: 1.5rem;
+  }
+
+  .instructions{
+    font-size: 1rem;
+  }
+  .best{
+    font-size: 1rem;
   }
 }
 
