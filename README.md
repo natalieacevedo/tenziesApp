@@ -1,6 +1,7 @@
 # Tenzies App. :woman_technologist:
 ---
 ## Check it out here: 
+https://natalieacevedo.github.io/tenziesApp/
 
 
 ## The reason behind this project
