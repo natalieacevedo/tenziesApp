@@ -1,10 +1,10 @@
-.mainBody{
+.mainBody {
   width: 35vw;
   height: 90vh;
   border: 3vw solid black;
   margin: 5vh auto;
   border-radius: 5rem;
-  position:relative;
+  position: relative;
   padding: 1.5rem;
   display: flex;
   flex-direction: column;
@@ -12,72 +12,71 @@
   align-items: center;
   background-color: darkseagreen;
 }
-.dot{
-display: block;
-width: .6rem;
-height: .6rem;
-border-radius: 50%;
-background-color: black;
+.dot {
+  display: block;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  background-color: black;
 }
 
-.one{
+.one {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
-.two{
-display: flex;
-justify-content: space-evenly;
-
+.two {
+  display: flex;
+  justify-content: space-evenly;
 }
 
-.two .dot:nth-of-type(2){
+.two .dot:nth-of-type(2) {
   align-self: flex-end;
 }
 
-
-.three{
+.three {
   display: flex;
   justify-content: space-between;
- 
 }
 
-.three .dot:nth-of-type(3){
+.three .dot:nth-of-type(3) {
   align-self: flex-end;
 }
 
-.three .dot:nth-of-type(2){
+.three .dot:nth-of-type(2) {
   align-self: center;
   justify-content: center;
- 
 }
 
-.four, .five, .six{
-display: flex;
-justify-content: space-between;
+.four,
+.five,
+.six {
+  display: flex;
+  justify-content: space-between;
 }
 
-.four .column, .five .column, .six .column{
+.four .column,
+.five .column,
+.six .column {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
 
-.five .column:nth-of-type(2){
+.five .column:nth-of-type(2) {
   justify-content: center;
 }
 
-.winner{
+.winner {
   color: #cf5e5e;
   position: relative;
   top: -4vh;
 }
 
-.boxesContainer{
-  
+.boxesContainer {
   display: grid;
-  grid-template: auto auto / repeat(5,1fr);
+  grid-template: auto auto / repeat(5, 1fr);
   gap: 1.25rem;
   margin-left: auto;
   margin-right: auto;
@@ -85,24 +84,23 @@ justify-content: space-between;
   margin-top: 5vh;
 }
 
-.mainTitle{
+.mainTitle {
   margin-left: auto;
   margin-right: auto;
   width: fit-content;
   position: relative;
-  top: -8vh; 
+  top: -8vh;
   font-size: 2.5rem;
 }
-.titleWinner{
+.titleWinner {
   position: relative;
-  top: .5vh;
+  top: 0.5vh;
 }
 
-.winnerStats{
+.winnerStats {
   color: #a04a59;
 }
-.littleBox{
-  
+.littleBox {
   height: 3.135rem;
   width: 3.135rem;
   box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.15);
@@ -110,40 +108,37 @@ justify-content: space-between;
   cursor: pointer;
   position: relative;
   background-color: white;
-  padding: .3rem;
- 
+  padding: 0.3rem;
 }
 
-.dieNum{
+.dieNum {
   font-size: 2rem;
   position: absolute;
   margin: 0 auto;
-  
 }
 
-.rollDice{
-height: fit-content;
-width: 6.25rem;
-border: none;
-border-radius:.5rem ;
-background-color: #5035FF;
-color: white;
-font-size: 1.2rem;
-margin-top: 5vh;
-cursor: pointer;
-padding: 0.5rem;
+.rollDice {
+  height: fit-content;
+  width: 6.25rem;
+  border: none;
+  border-radius: 0.5rem;
+  background-color: #5035ff;
+  color: white;
+  font-size: 1.2rem;
+  margin-top: 5vh;
+  cursor: pointer;
+  padding: 0.5rem;
 }
 
-.rollDice:active{
+.rollDice:active {
   box-shadow: inset 5px 5px 10px -3px rgba(0, 0, 0, 0.7);
 }
 
-.selected{
+.selected {
   background-color: pink;
 }
 
 .instructions {
-
   font-weight: 400;
   margin-top: -6vh;
   text-align: center;
@@ -153,13 +148,13 @@ padding: 0.5rem;
   padding-left: 4%;
   padding-right: 4%;
 }
-.winner{
-  margin-top:8vh;
-  position:relative;
-  top:-8vh;
+.winner {
+  margin-top: 8vh;
+  position: relative;
+  top: -8vh;
   text-align: center;
 }
-.best{
+.best {
   font-size: 1.2rem;
   margin-top: 3vh;
   text-align: center;
@@ -170,93 +165,95 @@ padding: 0.5rem;
 
 @media screen and (max-width: 600px) {
   .littleBox {
-    height: 1.70rem;
-    width: 1.70rem;
+    height: 1.7rem;
+    width: 1.7rem;
   }
 
-  .dot{
-  width: .4rem;
-  height: .4rem;
+  .dot {
+    width: 0.4rem;
+    height: 0.4rem;
   }
 
-  .dieNum{font-size: 1rem;}
+  .dieNum {
+    font-size: 1rem;
+  }
 
-  .boxesContainer{
-    gap:0.60rem;
+  .boxesContainer {
+    gap: 0.6rem;
     margin-top: 1.5vh;
   }
 
-  .mainBody{
+  .mainBody {
     width: 65vw;
   }
 
-  .instructions{
+  .instructions {
     position: relative;
     font-size: 1.2rem;
     top: 1vh;
-    margin-top:-5vh;
+    margin-top: -5vh;
     padding: relative;
     line-height: 1.5rem;
     font-size: 1.2rem;
   }
 
-  .mainTitle{
+  .mainTitle {
     top: -5vh;
     font-size: 2rem;
     text-align: center;
   }
 
-  .winner{
+  .winner {
     font-size: 1.5rem;
-    top:-3vh;
+    top: -3vh;
   }
-  .best{ 
+  .best {
     line-height: 1.5rem;
   }
 }
 
-
-@media screen and (max-width: 320px){
-  .littleBox{
-    height: 1.40rem;
-    width: 1.40rem;
+@media screen and (max-width: 320px) {
+  .littleBox {
+    height: 1.4rem;
+    width: 1.4rem;
   }
 
-  .mainTitle{
+  .mainTitle {
     font-size: 1.5rem;
   }
 
-  .instructions{
+  .instructions {
     font-size: 1rem;
   }
-  .best{
+  .best {
     font-size: 1rem;
   }
 }
 
-@media screen and (min-width:600px) and (max-width:1000px) {
-  .mainBody{
+@media screen and (min-width: 600px) and (max-width: 1000px) {
+  .mainBody {
     width: 60vw;
   }
   .littleBox {
     height: 2.1rem;
     width: 2.1rem;
   }
-  .boxesContainer{
-    gap:0.5rem;
+  .boxesContainer {
+    gap: 0.5rem;
     margin-top: 1.5vh;
   }
 
-  .dot{
-    width: .5rem;
-    height: .5rem;
-    }
-  .dieNum{font-size: 1.2rem;}
+  .dot {
+    width: 0.5rem;
+    height: 0.5rem;
+  }
+  .dieNum {
+    font-size: 1.2rem;
+  }
 
-  .mainTitle{
+  .mainTitle {
     top: -15vh;
     font-size: 2rem;
     margin-top: 8rem;
   }
-
 }
